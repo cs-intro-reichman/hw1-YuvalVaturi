@@ -11,16 +11,26 @@ public class TimeFormat {
 		// and then uses parseInt to cast the resulting string as an int.
 		int hours = Integer.parseInt("" + args[0].charAt(0) + args[0].charAt(1));
 		int minutes = Integer.parseInt("" + args[0].charAt(3) + args[0].charAt(4));
-		String time = (hours >= 12) ? "PM" : "AM";
+		String ampm = (hours >= 12) ? "PM" : "AM";
         
-        if (hours == 0) {
-            hours = 12; 
+        if (hours == 00) {
+            hours = 0; 
         } else if (hours > 12) {
             hours -= 12;
         }
 
-        String fminutes = (minutes < 10) ? "0" + minutes : String.valueOf(minutes);
+		String fminutes;
+		if (minutes < 10) {
+			fminutes = "0" + minutes;
+		}
+		else {
+			fminutes = String.valueOf(minutes);
+		}
+
         
-        System.out.println(hours + ":" + fminutes + " " + time);
+        System.out.println(hours + ":" + fminutes + " " + ampm);
     }
 } // java TimeFormat.java 17:08
+// java TimeFormat.java 00:01
+// java TimeFormat.java 12:08
+// java TimeFormat.java 08:08
