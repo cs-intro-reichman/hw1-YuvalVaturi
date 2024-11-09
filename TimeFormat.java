@@ -10,8 +10,27 @@ public class TimeFormat {
 		// It then concatenates the resulting string with the rightmost hour-digit,
 		// and then uses parseInt to cast the resulting string as an int.
 		int hours = Integer.parseInt("" + args[0].charAt(0) + args[0].charAt(1));
-		// Does the same with the minutes part of the input.
 		int minutes = Integer.parseInt("" + args[0].charAt(3) + args[0].charAt(4));
-        // Replace this comment with the rest of your code
-	}
-}
+		String ampm = (hours >= 12) ? "PM" : "AM";
+        
+        if (hours == 00) {
+            hours = 0; 
+        } else if (hours > 12) {
+            hours -= 12;
+        }
+
+		String fminutes;
+		if (minutes < 10) {
+			fminutes = "0" + minutes;
+		}
+		else {
+			fminutes = String.valueOf(minutes);
+		}
+
+        
+        System.out.println(hours + ":" + fminutes + " " + ampm);
+    }
+} // java TimeFormat.java 17:08
+// java TimeFormat.java 00:01
+// java TimeFormat.java 12:08
+// java TimeFormat.java 08:08
